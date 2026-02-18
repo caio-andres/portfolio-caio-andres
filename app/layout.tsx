@@ -13,9 +13,18 @@ const jetbrainsMono = JetBrains_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Caio André | Engenheiro de Software",
-  description: "Portfólio de Caio André Porto de Oliveira - Engenheiro de Software no Itaú Unibanco, Embaixador da Alura e Fundador do Servidor dos Programadores",
-  keywords: ["Caio André", "Engenheiro de Software", "Portfolio", "AWS", "Python", "GenAI", "Full Stack"],
+  title: "Caio André [Portfólio]",
+  description:
+    "Portfólio de Caio André Porto de Oliveira - Engenheiro de Software no Itaú Unibanco, Embaixador da Alura e Fundador do Servidor dos Programadores",
+  keywords: [
+    "Caio André",
+    "Engenheiro de Software",
+    "Portfolio",
+    "AWS",
+    "Python",
+    "GenAI",
+    "Full Stack",
+  ],
 };
 
 export default function RootLayout({
@@ -24,10 +33,11 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="pt-BR" className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}>
-      <body className="antialiased">
-        {children}
-      </body>
+    <html
+      lang="pt-BR"
+      className={`${spaceGrotesk.variable} ${jetbrainsMono.variable}`}
+    >
+      <body className="antialiased">{children}</body>
     </html>
   );
 }

@@ -70,7 +70,7 @@ main {
   }
 
   .bento-label {
-    @apply font-mono text-[10px] text-gray-600 tracking-widest uppercase;
+    @apply font-mono text-[10px] text-gray-400 tracking-widest uppercase;
   }
 
   .section-title {
@@ -109,4 +109,13 @@ main {
 
 .animate-fade-in {
   animation: fade-in 0.8s ease-out forwards;
+}
+
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
+}
+
+.animate-marquee {
+  animation: marquee 18s linear infinite;
 }
