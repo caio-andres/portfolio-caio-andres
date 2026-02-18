@@ -3,8 +3,8 @@ import { SiLinkedin } from "react-icons/si";
 
 export default function Contact() {
   return (
-    <section id="contact" className="py-20 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <div id="contact" className="py-4">
+      <div>
 
         {/* Section header */}
         <div className="flex items-center gap-4 mb-10">
@@ -12,9 +12,9 @@ export default function Contact() {
           <div>
             <p className="bento-label mb-1">Get in touch</p>
             <h2 className="section-title">
-              <span className="text-gray-700">{"<"}</span>
+              <span className="text-gray-500">{"<"}</span>
               Contact
-              <span className="text-gray-700">{"/>"}</span>
+              <span className="text-gray-500">{"/>"}</span>
             </h2>
           </div>
         </div>
@@ -42,11 +42,11 @@ export default function Contact() {
             <div className="space-y-2">
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-                <span className="text-xs text-gray-300 font-light">Disponível para conversas</span>
+                <span className="text-xs text-white font-light">Disponível para conversas</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-primary-blue flex-shrink-0" />
-                <span className="text-xs text-gray-300 font-light">São Paulo, SP</span>
+                <span className="text-xs text-white font-light">São Paulo, SP</span>
               </div>
               <div className="flex items-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-gray-600 flex-shrink-0" />
@@ -63,7 +63,7 @@ export default function Contact() {
             <span className="bento-label">Email</span>
             <div>
               <Mail className="text-primary-blue mb-2 group-hover:scale-110 transition-transform" size={24} strokeWidth={1.5} />
-              <p className="text-xs text-gray-300 font-light break-all">caioandres2112@gmail.com</p>
+              <p className="text-xs text-white font-light break-all">caioandres2112@gmail.com</p>
             </div>
           </a>
 
@@ -77,7 +77,7 @@ export default function Contact() {
             <span className="bento-label">Discord</span>
             <div>
               <MessageCircle className="text-[#5865F2] mb-2 group-hover:scale-110 transition-transform" size={24} strokeWidth={1.5} />
-              <p className="text-xs text-gray-300 font-light">caio_andres</p>
+              <p className="text-xs text-white font-light">caio_andres</p>
             </div>
           </a>
 
@@ -91,7 +91,7 @@ export default function Contact() {
             <span className="bento-label">LinkedIn</span>
             <div>
               <SiLinkedin className="text-[#0A66C2] mb-2 group-hover:scale-110 transition-transform" size={24} />
-              <p className="text-xs text-gray-300 font-light">in/caio-andres</p>
+              <p className="text-xs text-white font-light">in/caio-andres</p>
             </div>
           </a>
 
@@ -99,15 +99,15 @@ export default function Contact() {
 
         {/* Footer */}
         <div className="mt-10 pt-6 border-t border-primary-blue/10 flex items-center justify-between">
-          <p className="font-mono text-[10px] text-gray-700">
+          <p className="font-mono text-[10px] text-gray-500">
             © 2026 [Caio André Porto de Oliveira]
           </p>
-          <p className="font-mono text-[10px] text-gray-800">
+          <p className="font-mono text-[10px] text-gray-500">
             portfolio.v1
           </p>
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }

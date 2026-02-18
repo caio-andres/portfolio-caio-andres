@@ -56,7 +56,7 @@ const experiences: Experience[] = [
     title: "Desenvolvedor Front-end",
     company: "AaccesOn",
     period: "Mar 2024 – Set 2024",
-    type: "CLT",
+    type: "Freelance",
     current: false,
     description:
       "SaaS e ERP para controle digital de eventos. Módulo de fluxo de caixa com integração em tempo real via Socket.io.",
@@ -75,7 +75,7 @@ const experiences: Experience[] = [
       "Interfaces e aplicações web com WordPress, HTML, CSS, JavaScript e PHP. Manutenção de aplicações em produção.",
     tags: ["WordPress", "JavaScript", "PHP", "CSS"],
     cardClass: "border border-gray-800 hover:border-gray-700",
-    companyColor: "text-gray-500",
+    companyColor: "text-gray-400",
   },
   {
     title: "Estagiário Suporte em TI",
@@ -87,14 +87,14 @@ const experiences: Experience[] = [
       "Resolução de chamados técnicos, testes de API com Postman, consultas em MongoDB e análise de dados com Excel.",
     tags: ["Postman", "MongoDB", "Excel"],
     cardClass: "border border-gray-800 hover:border-gray-700",
-    companyColor: "text-gray-500",
+    companyColor: "text-gray-400",
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="py-20 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <div id="experience" className="py-4">
+      <div>
 
         {/* Section header */}
         <div className="flex items-center gap-4 mb-10">
@@ -102,9 +102,9 @@ export default function Experience() {
           <div>
             <p className="bento-label mb-1">Career</p>
             <h2 className="section-title">
-              <span className="text-gray-700">{"<"}</span>
+              <span className="text-gray-400">{"<"}</span>
               Experience
-              <span className="text-gray-700">{"/>"}</span>
+              <span className="text-gray-400">{"/>"}</span>
             </h2>
           </div>
         </div>
@@ -129,19 +129,19 @@ export default function Experience() {
                     </span>
                   )}
                 </div>
-                <h3 className="text-sm font-bold text-gray-200 leading-tight mb-1">
+                <h3 className="text-sm font-bold text-white leading-tight mb-1">
                   {exp.title}
                 </h3>
                 <div className="flex items-center gap-2">
-                  <span className="font-mono text-[9px] text-gray-600">{exp.period}</span>
-                  <span className="font-mono text-[9px] px-1.5 py-0.5 border border-primary-blue/10 text-gray-700">
+                  <span className="font-mono text-[9px] text-gray-400">{exp.period}</span>
+                  <span className="font-mono text-[9px] px-1.5 py-0.5 border border-primary-blue/10 text-gray-400">
                     {exp.type}
                   </span>
                 </div>
               </div>
 
               {/* Description */}
-              <p className="text-[11px] text-gray-500 line-clamp-3 font-light leading-relaxed my-2">
+              <p className="text-[11px] text-gray-400 line-clamp-3 font-light leading-relaxed my-2">
                 {exp.description}
               </p>
 
@@ -150,7 +150,7 @@ export default function Experience() {
                 {exp.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[9px] px-2 py-0.5 bg-primary-dark border border-primary-blue/10 text-gray-600"
+                    className="font-mono text-[9px] px-2 py-0.5 bg-primary-dark border border-primary-blue/10 text-gray-400"
                   >
                     {tag}
                   </span>
@@ -161,6 +161,6 @@ export default function Experience() {
         </div>
 
       </div>
-    </section>
+    </div>
   );
 }

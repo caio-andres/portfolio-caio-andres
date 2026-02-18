@@ -65,8 +65,8 @@ export default function Projects() {
   const [featured, ...rest] = projects;
 
   return (
-    <section id="projects" className="py-20 px-6">
-      <div className="container mx-auto max-w-5xl">
+    <div id="projects" className="py-4">
+      <div>
 
         {/* Section header */}
         <div className="flex items-center gap-4 mb-10">
@@ -74,9 +74,9 @@ export default function Projects() {
           <div>
             <p className="bento-label mb-1">Portfolio</p>
             <h2 className="section-title">
-              <span className="text-gray-700">{"<"}</span>
+              <span className="text-gray-400">{"<"}</span>
               Projects
-              <span className="text-gray-700">{"/>"}</span>
+              <span className="text-gray-400">{"/>"}</span>
             </h2>
           </div>
         </div>
@@ -93,10 +93,10 @@ export default function Projects() {
               </span>
             </div>
             <div className="flex-1 my-3 lg:my-4">
-              <h3 className="text-2xl lg:text-3xl font-bold text-gray-200 group-hover:text-primary-blue transition-colors mb-1">
+              <h3 className="text-2xl lg:text-3xl font-bold text-white group-hover:text-primary-blue transition-colors mb-1">
                 {featured.title}
               </h3>
-              <p className="font-mono text-[10px] text-gray-600 mb-3">{featured.period}</p>
+              <p className="font-mono text-[10px] text-gray-400 mb-3">{featured.period}</p>
               <p className="text-sm text-gray-400 font-light leading-relaxed line-clamp-4 lg:line-clamp-none">
                 {featured.description}
               </p>
@@ -111,7 +111,7 @@ export default function Projects() {
                 {featured.tags.map((tag) => (
                   <span
                     key={tag}
-                    className="font-mono text-[9px] px-2 py-0.5 border border-primary-blue/20 text-gray-500 hover:text-primary-blue hover:border-primary-blue/50 transition-all"
+                    className="font-mono text-[9px] px-2 py-0.5 border border-primary-blue/20 text-gray-400 hover:text-primary-blue hover:border-primary-blue/50 transition-all"
                   >
                     {tag}
                   </span>
@@ -135,7 +135,7 @@ export default function Projects() {
                       href={project.link}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-primary-blue transition-colors"
+                      className="text-gray-400 hover:text-primary-blue transition-colors"
                       aria-label="Ver projeto"
                     >
                       <ExternalLink size={13} strokeWidth={1.5} />
@@ -146,7 +146,7 @@ export default function Projects() {
                       href={project.github}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="text-gray-600 hover:text-primary-blue transition-colors"
+                      className="text-gray-400 hover:text-primary-blue transition-colors"
                       aria-label="Ver no GitHub"
                     >
                       <Github size={13} strokeWidth={1.5} />
@@ -157,10 +157,10 @@ export default function Projects() {
 
               {/* Title + description */}
               <div className="flex-1 my-2">
-                <h3 className="text-sm font-bold text-gray-200 group-hover:text-primary-blue transition-colors mb-2 leading-tight">
+                <h3 className="text-sm font-bold text-white group-hover:text-primary-blue transition-colors mb-2 leading-tight">
                   {project.title}
                 </h3>
-                <p className="text-[11px] text-gray-500 line-clamp-3 font-light leading-relaxed">
+                <p className="text-[11px] text-gray-400 line-clamp-3 font-light leading-relaxed">
                   {project.description}
                 </p>
               </div>
@@ -168,19 +168,19 @@ export default function Projects() {
               {/* Bottom */}
               <div>
                 {project.badge && (
-                  <p className="font-mono text-[9px] text-gray-600 mb-2">→ {project.badge}</p>
+                  <p className="font-mono text-[9px] text-gray-400 mb-2">→ {project.badge}</p>
                 )}
                 <div className="flex flex-wrap gap-1.5">
                   {project.tags.slice(0, 4).map((tag) => (
                     <span
                       key={tag}
-                      className="font-mono text-[9px] px-2 py-0.5 border border-primary-blue/10 text-gray-600"
+                      className="font-mono text-[9px] px-2 py-0.5 border border-primary-blue/10 text-gray-400"
                     >
                       {tag}
                     </span>
                   ))}
                   {project.tags.length > 4 && (
-                    <span className="font-mono text-[9px] text-gray-700">
+                    <span className="font-mono text-[9px] text-gray-400">
                       +{project.tags.length - 4}
                     </span>
                   )}
@@ -191,6 +191,6 @@ export default function Projects() {
 
         </div>
       </div>
-    </section>
+    </div>
   );
 }
