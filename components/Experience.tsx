@@ -1,107 +1,165 @@
-import { Briefcase, Building2 } from "lucide-react";
+import { Building2 } from "lucide-react";
 
 interface Experience {
   title: string;
   company: string;
   period: string;
-  description: string;
   type: string;
+  description: string;
+  tags: string[];
+  current?: boolean;
+  cardClass: string;
+  companyColor: string;
 }
 
 const experiences: Experience[] = [
   {
     title: "Desenvolvedor Júnior",
     company: "Itaú Unibanco",
-    period: "Março de 2026 – Atual",
+    period: "Mar 2026 – Atual",
     type: "CLT",
-    description: "Desenvolvimento em Python e AWS na modernização de aplicações legadas para arquitetura cloud e serverless. Foco em reestruturação para ambientes escaláveis, desacoplados e orientados a eventos, utilizando Lambda, API Gateway, ECS, RDS. Infraestrutura como código com Terraform, com foco em performance, redução de custos e alta disponibilidade.",
+    current: true,
+    description:
+      "Modernização de aplicações legadas para arquitetura cloud e serverless. Lambda, API Gateway, ECS, RDS. Infraestrutura como código com Terraform, foco em performance e redução de custos.",
+    tags: ["Python", "AWS", "Terraform", "Serverless"],
+    cardClass:
+      "border border-[#EC7000]/30 hover:border-[#EC7000]/60 hover:bg-[#EC7000]/5",
+    companyColor: "text-[#EC7000]",
   },
   {
-    title: "Estagiário em Engenharia de Software & IA",
-    company: "Itaú Unibanco - Command Center",
-    period: "Junho de 2025 – Fevereiro de 2026",
+    title: "Estagiário Eng. Software & IA",
+    company: "Itaú · Command Center",
+    period: "Jun 2025 – Fev 2026",
     type: "Estágio",
-    description: "Desenvolvimento Full Stack com forte integração de GenAI. Estruturação de fluxos RAG (Retrieval-Augmented Generation) integrando LLMs a bases estruturadas. Infraestrutura AWS com Terraform (Lambda, Athena, API Gateway, ECS, NLB, EC2, RDS, CloudFront, Step Functions, SageMaker). Python, SQL, NoSQL, Datadog, Clean Code e Arquitetura Limpa.",
+    current: false,
+    description:
+      "Full Stack com GenAI. Fluxos RAG integrando LLMs a bases estruturadas. AWS com Terraform: Lambda, Athena, ECS, SageMaker. Python, SQL, NoSQL, Datadog.",
+    tags: ["GenAI", "RAG", "Python", "AWS"],
+    cardClass:
+      "border border-[#EC7000]/20 hover:border-[#EC7000]/40",
+    companyColor: "text-[#EC7000]",
   },
   {
-    title: "Fundador & Desenvolvedor Full Stack",
+    title: "Fundador & Dev Full Stack",
     company: "YouRoadmaps",
-    period: "Dezembro de 2024 – Atual",
+    period: "Dez 2024 – Atual",
     type: "Empreendedor",
-    description: "Plataforma SaaS de educação digital com +100 alunos no primeiro mês. Arquitetura em microsserviços, TypeScript, Next.js, React, Tailwind CSS, Node.js, Fastify, Prisma, MongoDB, Docker. Liderança técnica, modelagem de domínio, SEO e e-commerce digital.",
+    current: false,
+    description:
+      "Plataforma SaaS de educação digital com +100 alunos no primeiro mês. Arquitetura em microsserviços. Liderança técnica, modelagem de domínio, SEO.",
+    tags: ["Next.js", "TypeScript", "Node.js", "MongoDB"],
+    cardClass:
+      "border border-primary-blue/20 hover:border-primary-blue/50 hover:bg-primary-blue/5",
+    companyColor: "text-primary-blue",
   },
   {
     title: "Desenvolvedor Front-end",
     company: "AaccesOn",
-    period: "Março de 2024 – Setembro de 2024",
+    period: "Mar 2024 – Set 2024",
     type: "CLT",
-    description: "Desenvolvimento de SaaS e ERP para controle digital de eventos. Módulo de fluxo de caixa com integração em tempo real. TypeScript, React, Bootstrap, DBeaver, Git Flow, Docker.",
+    current: false,
+    description:
+      "SaaS e ERP para controle digital de eventos. Módulo de fluxo de caixa com integração em tempo real via Socket.io.",
+    tags: ["TypeScript", "React", "Socket.io", "Docker"],
+    cardClass:
+      "border border-primary-blue/20 hover:border-primary-blue/40",
+    companyColor: "text-gray-400",
   },
   {
-    title: "Estagiário Desenvolvedor Web",
+    title: "Estagiário Dev Web",
     company: "Agência Formiga Digital",
-    period: "Setembro de 2023 – Março de 2024",
+    period: "Set 2023 – Mar 2024",
     type: "Estágio",
-    description: "Construção de interfaces e aplicações web com WordPress, HTML, CSS, JavaScript, PHP. Gerenciamento com phpMyAdmin e cPanel. Manutenção de aplicações em produção.",
+    current: false,
+    description:
+      "Interfaces e aplicações web com WordPress, HTML, CSS, JavaScript e PHP. Manutenção de aplicações em produção.",
+    tags: ["WordPress", "JavaScript", "PHP", "CSS"],
+    cardClass: "border border-gray-800 hover:border-gray-700",
+    companyColor: "text-gray-500",
   },
   {
-    title: "Estagiário Técnico de Suporte em TI",
+    title: "Estagiário Suporte em TI",
     company: "Evermart",
-    period: "Março de 2023 – Agosto de 2023",
+    period: "Mar 2023 – Ago 2023",
     type: "Estágio",
-    description: "Resolução de chamados técnicos, testes de API com Postman, consultas em MongoDB, análise de dados com Excel. Fortalecimento de capacidade analítica e resolução de problemas.",
+    current: false,
+    description:
+      "Resolução de chamados técnicos, testes de API com Postman, consultas em MongoDB e análise de dados com Excel.",
+    tags: ["Postman", "MongoDB", "Excel"],
+    cardClass: "border border-gray-800 hover:border-gray-700",
+    companyColor: "text-gray-500",
   },
 ];
 
 export default function Experience() {
   return (
-    <section id="experience" className="min-h-screen py-32 px-6">
-      <div className="container mx-auto max-w-6xl">
-        <div className="flex items-center gap-4 mb-16">
-          <Building2 className="text-primary-blue w-6 h-6" strokeWidth={1.5} />
+    <section id="experience" className="py-20 px-6">
+      <div className="container mx-auto max-w-5xl">
+
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-10">
+          <Building2 className="text-primary-blue w-5 h-5" strokeWidth={1.5} />
           <div>
-            <p className="font-mono text-xs text-gray-600 uppercase tracking-widest mb-1">Career</p>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
-              <span className="text-gray-600">{'<'}</span>
+            <p className="bento-label mb-1">Career</p>
+            <h2 className="section-title">
+              <span className="text-gray-700">{"<"}</span>
               Experience
-              <span className="text-gray-600">{'/>'}</span>
+              <span className="text-gray-700">{"/>"}</span>
             </h2>
           </div>
         </div>
 
-        <div className="space-y-1">
-          {experiences.map((exp, index) => (
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3 lg:auto-rows-[220px]">
+          {experiences.map((exp, i) => (
             <div
-              key={index}
-              className="group relative border-l-2 border-primary-blue/20 hover:border-primary-blue pl-8 py-6 transition-all duration-300"
+              key={i}
+              className={`bento-card justify-between ${exp.cardClass}`}
             >
-              <div className="absolute left-[-9px] top-8 w-4 h-4 border-2 border-primary-blue bg-primary-dark group-hover:bg-primary-blue transition-all duration-300"></div>
-
-              <div className="flex flex-col md:flex-row md:items-start md:justify-between gap-4 mb-3">
-                <div className="flex-1">
-                  <div className="flex items-center gap-3 mb-2">
-                    <Briefcase className="text-primary-blue w-4 h-4 opacity-0 group-hover:opacity-100 transition-opacity" strokeWidth={1.5} />
-                    <h3 className="text-lg md:text-xl font-bold text-gray-200 group-hover:text-primary-blue transition-colors">
-                      {exp.title}
-                    </h3>
-                  </div>
-                  <p className="text-base text-gray-400 mb-1">{exp.company}</p>
+              {/* Top */}
+              <div>
+                <div className="flex items-center justify-between gap-2 mb-2">
+                  <span className={`text-xs font-bold tracking-tight ${exp.companyColor}`}>
+                    {exp.company}
+                  </span>
+                  {exp.current && (
+                    <span className="flex items-center gap-1 flex-shrink-0">
+                      <span className="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse" />
+                      <span className="font-mono text-[9px] text-green-500 uppercase">Atual</span>
+                    </span>
+                  )}
                 </div>
-
-                <div className="flex flex-col items-start md:items-end gap-2">
-                  <p className="font-mono text-xs text-gray-600">{exp.period}</p>
-                  <span className="font-mono text-xs px-2 py-1 border border-primary-blue/30 text-gray-500">
+                <h3 className="text-sm font-bold text-gray-200 leading-tight mb-1">
+                  {exp.title}
+                </h3>
+                <div className="flex items-center gap-2">
+                  <span className="font-mono text-[9px] text-gray-600">{exp.period}</span>
+                  <span className="font-mono text-[9px] px-1.5 py-0.5 border border-primary-blue/10 text-gray-700">
                     {exp.type}
                   </span>
                 </div>
               </div>
 
-              <p className="text-sm text-gray-500 leading-relaxed font-light">
+              {/* Description */}
+              <p className="text-[11px] text-gray-500 line-clamp-3 font-light leading-relaxed my-2">
                 {exp.description}
               </p>
+
+              {/* Tags */}
+              <div className="flex flex-wrap gap-1.5">
+                {exp.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="font-mono text-[9px] px-2 py-0.5 bg-primary-dark border border-primary-blue/10 text-gray-600"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
             </div>
           ))}
         </div>
+
       </div>
     </section>
   );

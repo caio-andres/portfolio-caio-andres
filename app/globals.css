@@ -64,6 +64,20 @@ main {
   z-index: 1;
 }
 
+@layer components {
+  .bento-card {
+    @apply bg-primary-dark/50 backdrop-blur-sm p-5 flex flex-col transition-all duration-300;
+  }
+
+  .bento-label {
+    @apply font-mono text-[10px] text-gray-600 tracking-widest uppercase;
+  }
+
+  .section-title {
+    @apply text-3xl md:text-4xl font-bold tracking-tight;
+  }
+}
+
 @layer utilities {
   .text-balance {
     text-wrap: balance;

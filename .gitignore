@@ -10,4 +10,9 @@ coverage
 .idea
 .vscode
 .abacusai
+
+# claude
+.claude
 CLAUDE.md
+mudanca-*.md
+image-contexto-*.*

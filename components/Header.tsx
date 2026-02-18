@@ -1,13 +1,29 @@
 import Link from "next/link";
-import { Github, Linkedin, Youtube, Instagram, Music, Terminal } from "lucide-react";
+import { Terminal } from "lucide-react";
+import {
+  SiGithub,
+  SiLinkedin,
+  SiYoutube,
+  SiInstagram,
+  SiTiktok,
+  SiDiscord,
+} from "react-icons/si";
 
 const socialLinks = [
-  { name: "GitHub", url: "https://github.com/caio-andres/", icon: Github },
-  { name: "LinkedIn", url: "https://www.linkedin.com/in/caio-andres/", icon: Linkedin },
-  { name: "YouTube", url: "https://www.youtube.com/@caio_andress", icon: Youtube },
-  { name: "Instagram", url: "https://www.instagram.com/caio_andress", icon: Instagram },
-  { name: "TikTok", url: "https://www.tiktok.com/@caio_andres", icon: Music },
+  { name: "GitHub", url: "https://github.com/caio-andres/", icon: SiGithub },
+  { name: "LinkedIn", url: "https://www.linkedin.com/in/caio-andres/", icon: SiLinkedin },
+  { name: "YouTube", url: "https://www.youtube.com/@caio_andress", icon: SiYoutube },
+  { name: "Instagram", url: "https://www.instagram.com/caio_andress", icon: SiInstagram },
+  { name: "TikTok", url: "https://www.tiktok.com/@caio_andres", icon: SiTiktok },
+  { name: "Discord", url: "https://discord.gg/programador", icon: SiDiscord },
 ];
+
+const headerLinks = [
+  { href: "#about", label: "about" },
+  { href: "#projects", label: "projects" },
+  { href: "#experience", label: "experience" },
+  { href: "#contact", label: "contact" },
+]
 
 export default function Header() {
   return (
@@ -18,17 +34,12 @@ export default function Header() {
           <Link href="/" className="flex items-center gap-2 group">
             <Terminal className="text-primary-blue w-5 h-5 group-hover:rotate-180 transition-transform duration-500" />
             <span className="font-mono text-sm tracking-wider text-gray-300 hover:text-primary-blue transition-colors">
-              {'<'}caio.andre{'/>'}
+              {"<"}caio.andre{"/>"}
             </span>
           </Link>
 
           <div className="hidden md:flex items-center gap-1">
-            {[
-              { href: "#about", label: "about" },
-              { href: "#projects", label: "projects" },
-              { href: "#experience", label: "experience" },
-              { href: "#contact", label: "contact" }
-            ].map((item, i) => (
+            {headerLinks.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
@@ -41,21 +52,18 @@ export default function Header() {
           </div>
 
           <div className="flex items-center gap-3">
-            {socialLinks.map((link) => {
-              const Icon = link.icon;
-              return (
-                <a
-                  key={link.name}
-                  href={link.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="text-gray-600 hover:text-primary-blue transition-all hover:scale-110"
-                  aria-label={link.name}
-                >
-                  <Icon size={16} strokeWidth={1.5} />
-                </a>
-              );
-            })}
+            {socialLinks.map(({ name, url, icon: Icon }) => (
+              <a
+                key={name}
+                href={url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-gray-600 hover:text-primary-blue transition-all hover:scale-110"
+                aria-label={name}
+              >
+                <Icon size={16} />
+              </a>
+            ))}
           </div>
         </nav>
       </header>

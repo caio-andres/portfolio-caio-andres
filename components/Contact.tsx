@@ -1,77 +1,113 @@
 import { GraduationCap, Mail, MessageCircle } from "lucide-react";
+import { SiLinkedin } from "react-icons/si";
 
 export default function Contact() {
   return (
-    <section id="contact" className="min-h-screen py-20 px-6">
-      <div className="container mx-auto max-w-4xl">
-        <h2 className="text-4xl md:text-5xl font-bold mb-12">
-          Educação <span className="text-primary-blue">&</span> Contato
-        </h2>
+    <section id="contact" className="py-20 px-6">
+      <div className="container mx-auto max-w-5xl">
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
-          <div className="bg-primary-dark/50 border border-gray-800 rounded-lg p-8 hover:border-primary-blue/50 transition-all">
-            <div className="flex items-center gap-3 mb-4">
-              <GraduationCap className="text-primary-blue" size={32} />
-              <h3 className="text-2xl font-semibold">Formação</h3>
-            </div>
+        {/* Section header */}
+        <div className="flex items-center gap-4 mb-10">
+          <GraduationCap className="text-primary-blue w-5 h-5" strokeWidth={1.5} />
+          <div>
+            <p className="bento-label mb-1">Get in touch</p>
+            <h2 className="section-title">
+              <span className="text-gray-700">{"<"}</span>
+              Contact
+              <span className="text-gray-700">{"/>"}</span>
+            </h2>
+          </div>
+        </div>
 
-            <div className="space-y-2">
-              <p className="text-xl text-primary-blue font-medium">
+        {/* Bento Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:auto-rows-[180px]">
+
+          {/* Card 1 — Formação: col-span-2 */}
+          <div className="md:col-span-2 bento-card border border-primary-blue/20 justify-between hover:border-primary-blue/40">
+            <span className="bento-label">Formação</span>
+            <div>
+              <h3 className="text-base font-bold text-gray-200 mb-1">
                 Bacharelado em Ciência da Computação
+              </h3>
+              <p className="text-sm text-primary-blue font-light">Universidade São Judas Tadeu</p>
+              <p className="font-mono text-[10px] text-gray-600 mt-2">
+                Jan 2022 – Jun 2026 &nbsp;·&nbsp; 9º/9º semestre
               </p>
-              <p className="text-gray-300">Universidade São Judas Tadeu</p>
-              <p className="text-gray-400 text-sm">
-                Janeiro de 2022 – Junho de 2026
-              </p>
-              <p className="text-gray-400 text-sm">9º/9º semestre</p>
             </div>
           </div>
-        </div>
 
-        <div className="bg-gradient-to-br from-primary-blue/10 to-primary-blueAlt/10 border border-primary-blue/30 rounded-lg p-8">
-          <h3 className="text-3xl font-bold mb-6 text-center">
-            Vamos conversar?
-          </h3>
-
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-            <a
-              href="mailto:caioandres2112@gmail.com"
-              className="flex items-center gap-4 bg-primary-dark/50 border border-gray-700 rounded-lg p-6 hover:border-primary-blue hover:bg-primary-dark/80 transition-all group"
-            >
-              <Mail
-                className="text-primary-blue group-hover:scale-110 transition-transform"
-                size={32}
-              />
-              <div>
-                <p className="text-sm text-gray-400 mb-1">Email</p>
-                <p className="text-white font-medium">
-                  caioandres2112@gmail.com
-                </p>
+          {/* Card 2 — Status */}
+          <div className="bento-card border border-green-500/20 justify-between hover:border-green-500/40 hover:bg-green-500/5">
+            <span className="bento-label">Status</span>
+            <div className="space-y-2">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
+                <span className="text-xs text-gray-300 font-light">Disponível para conversas</span>
               </div>
-            </a>
-
-            <a
-              href="https://discord.com/users/caio_andres"
-              target="_blank"
-              rel="noopener noreferrer"
-              className="flex items-center gap-4 bg-primary-dark/50 border border-gray-700 rounded-lg p-6 hover:border-primary-blue hover:bg-primary-dark/80 transition-all group"
-            >
-              <MessageCircle
-                className="text-primary-blue group-hover:scale-110 transition-transform"
-                size={32}
-              />
-              <div>
-                <p className="text-sm text-gray-400 mb-1">Discord</p>
-                <p className="text-white font-medium">caio_andres</p>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-primary-blue flex-shrink-0" />
+                <span className="text-xs text-gray-300 font-light">São Paulo, SP</span>
               </div>
-            </a>
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-gray-600 flex-shrink-0" />
+                <span className="text-xs text-gray-500 font-mono text-[10px]">Eng. Software Jr.</span>
+              </div>
+            </div>
           </div>
-        </div>
-      </div>
 
-      <footer className="mt-20 text-center text-gray-500 text-sm">
-        <p>© 2026 [Caio André Porto de Oliveira]</p>
-      </footer>
+          {/* Card 3 — Email */}
+          <a
+            href="mailto:caioandres2112@gmail.com"
+            className="bento-card border border-primary-blue/20 justify-between hover:border-primary-blue/50 hover:bg-primary-blue/5 group"
+          >
+            <span className="bento-label">Email</span>
+            <div>
+              <Mail className="text-primary-blue mb-2 group-hover:scale-110 transition-transform" size={24} strokeWidth={1.5} />
+              <p className="text-xs text-gray-300 font-light break-all">caioandres2112@gmail.com</p>
+            </div>
+          </a>
+
+          {/* Card 4 — Discord */}
+          <a
+            href="https://discord.com/users/caio_andres"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-card border border-[#5865F2]/20 justify-between hover:border-[#5865F2]/50 hover:bg-[#5865F2]/5 group"
+          >
+            <span className="bento-label">Discord</span>
+            <div>
+              <MessageCircle className="text-[#5865F2] mb-2 group-hover:scale-110 transition-transform" size={24} strokeWidth={1.5} />
+              <p className="text-xs text-gray-300 font-light">caio_andres</p>
+            </div>
+          </a>
+
+          {/* Card 5 — LinkedIn */}
+          <a
+            href="https://www.linkedin.com/in/caio-andres/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="bento-card border border-[#0A66C2]/20 justify-between hover:border-[#0A66C2]/50 hover:bg-[#0A66C2]/5 group"
+          >
+            <span className="bento-label">LinkedIn</span>
+            <div>
+              <SiLinkedin className="text-[#0A66C2] mb-2 group-hover:scale-110 transition-transform" size={24} />
+              <p className="text-xs text-gray-300 font-light">in/caio-andres</p>
+            </div>
+          </a>
+
+        </div>
+
+        {/* Footer */}
+        <div className="mt-10 pt-6 border-t border-primary-blue/10 flex items-center justify-between">
+          <p className="font-mono text-[10px] text-gray-700">
+            © 2026 [Caio André Porto de Oliveira]
+          </p>
+          <p className="font-mono text-[10px] text-gray-800">
+            portfolio.v1
+          </p>
+        </div>
+
+      </div>
     </section>
   );
 }
