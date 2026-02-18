@@ -1,5 +1,3 @@
-"use client";
-
 import { GraduationCap, Mail, MessageCircle } from "lucide-react";
 
 export default function Contact() {

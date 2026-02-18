@@ -1,5 +1,3 @@
-"use client";
-
 import { Briefcase, Building2 } from "lucide-react";
 
 interface Experience {
@@ -15,7 +13,7 @@ const experiences: Experience[] = [
     title: "Desenvolvedor Júnior",
     company: "Itaú Unibanco",
     period: "Março de 2026 – Atual",
-    type: "Efetivo",
+    type: "CLT",
     description: "Desenvolvimento em Python e AWS na modernização de aplicações legadas para arquitetura cloud e serverless. Foco em reestruturação para ambientes escaláveis, desacoplados e orientados a eventos, utilizando Lambda, API Gateway, ECS, RDS. Infraestrutura como código com Terraform, com foco em performance, redução de custos e alta disponibilidade.",
   },
   {

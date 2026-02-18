@@ -1,5 +1,3 @@
-"use client";
-
 import { ExternalLink, Github, FolderGit2 } from "lucide-react";
 
 interface Project {
@@ -28,7 +26,7 @@ const projects: Project[] = [
   {
     title: "Simple Programming Language",
     period: "Junho de 2024 – Dezembro de 2024",
-    description: "Linguagem de programação interpretada desenvolvida na USJ. Construção completa incluindo motor de parsing, interpretação e interface de execução. Aplicação prática de estruturas de dados, análise léxica e sintática.",
+    description: "Linguagem de programação interpretada desenvolvida na USJT. Construção completa incluindo motor de parsing, interpretação e interface de execução. Aplicação prática de estruturas de dados, análise léxica e sintática.",
     tags: ["TypeScript", "Node.js", "Express.js", "React", "Compiladores"],
   },
   {
