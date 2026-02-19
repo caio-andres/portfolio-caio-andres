@@ -25,6 +25,10 @@ export const metadata: Metadata = {
     "GenAI",
     "Full Stack",
   ],
+  icons: {
+    icon: "/identidade-visual/identidade-visual-sem-fundo.png",
+    apple: "/identidade-visual/identidade-visual-sem-fundo.png",
+  },
 };
 
 export default function RootLayout({
