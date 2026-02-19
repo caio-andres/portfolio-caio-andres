@@ -13,6 +13,25 @@ const skills = [
   "Redis",
 ];
 
+interface Certification {
+  link: string;
+  image: string;
+  alt: string;
+}
+
+const certifications: Certification[] = [
+  {
+    link: "https://www.credly.com/badges/91cc8685-4c19-4f44-a61d-2f0b66158540",
+    image: "https://images.credly.com/size/110x110/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png",
+    alt: "AWS Certified Cloud Practitioner",
+  },
+  {
+    link: "https://www.credly.com/badges/500cc492-d55d-4d63-a86d-cee52123fb9c",
+    image: "https://images.credly.com/size/340x340/images/e3541a0c-dd4a-4820-8052-5001006efc85/blob",
+    alt: "AWS Academy Cloud Foundations",
+  },
+];
+
 export default function AboutContent() {
   return (
     <div className="py-4 grid grid-cols-1 md:grid-cols-3 gap-3 md:auto-rows-[160px]">
@@ -34,18 +53,19 @@ export default function AboutContent() {
       {/* Card 2 - AWS Certification */}
       <div className="bento-card border border-primary-blue/20 items-center justify-between hover:border-primary-blue/40">
         <span className="bento-label self-start">Certificações</span>
-        <a
-          href="https://www.credly.com/badges/91cc8685-4c19-4f44-a61d-2f0b66158540"
-          target="_blank"
-          rel="noopener noreferrer"
-          className="hover:opacity-80 transition-opacity"
-        >
-          <img
-            src="https://images.credly.com/size/110x110/images/00634f82-b07f-4bbd-a6bb-53de397fc3a6/image.png"
-            alt="AWS Certified Cloud Practitioner"
-            className="w-16 h-16"
-          />
-        </a>
+        <div className="flex">
+          {certifications.map((cert, i) => (
+            <a
+              key={i}
+              href={cert.link}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="hover:opacity-80 transition-opacity"
+            >
+              <img src={cert.image} alt={cert.alt} className="w-20 h-20" />
+            </a>
+          ))}
+        </div>
       </div>
 
       {/* Card 3 — Formação */}
