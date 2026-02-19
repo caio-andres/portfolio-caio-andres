@@ -1,6 +1,6 @@
 export type SideCardData = {
   label: string;
-  stat: string;
+  stat?: string;
   title: string;
   href?: string;
   bg: string;
@@ -22,9 +22,6 @@ export default function SideCard({ card }: { card: SideCardData }) {
       <div className="relative z-10 flex items-start justify-between gap-2">
         <span className={`font-mono text-[9px] uppercase tracking-widest ${card.labelClass}`}>
           {card.label}
-        </span>
-        <span className={`font-mono text-[9px] text-right whitespace-pre-line leading-tight ${card.labelClass}`}>
-          {card.stat}
         </span>
       </div>
       <p className="relative z-10 text-[10px] font-semibold text-white whitespace-pre-line leading-tight">
