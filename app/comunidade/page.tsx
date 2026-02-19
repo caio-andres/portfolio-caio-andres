@@ -5,7 +5,7 @@ import { SiDiscord } from "react-icons/si";
 import CommunityBody from "@/components/comunidade/CommunityBody";
 
 export const metadata: Metadata = {
-  title: "Comunidade — Servidor dos Programadores",
+  title: "Caio André [SdP]",
   description:
     "Conheça o Servidor dos Programadores: meetups, parcerias e a maior comunidade de devs do Brasil.",
 };
