@@ -1,0 +1,73 @@
+name: Build and Deploy to VPS
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: "20"
+          cache: "npm"
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Build Next.js app
+        run: npm run build
+
+      - name: Package build
+        run: |
+          tar -czf deploy.tar.gz \
+            .next \
+            public \
+            package.json \
+            package-lock.json \
+            next.config.js \
+            node_modules
+
+      - name: Deploy to VPS
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          source: "deploy.tar.gz"
+          target: "/tmp/"
+
+      - name: Extract and restart
+        uses: appleboy/ssh-action@v1.0.3
+        with:
+          host: ${{ secrets.VPS_HOST }}
+          username: ${{ secrets.VPS_USER }}
+          key: ${{ secrets.VPS_SSH_KEY }}
+          script: |
+            echo "Iniciando deploy..."
+
+            pm2 stop portfolio || true
+
+            if [ -d /var/www/portfolio-caio-andres/.next ]; then
+              echo "Fazendo backup do build anterior..."
+              tar -czf ~/backups/backup-$(date +%Y%m%d%H%M%S).tar.gz \
+                /var/www/portfolio-caio-andres/.next
+            fi
+
+            echo "Extraindo novo build..."
+            cd /var/www/portfolio-caio-andres
+            tar -xzf /tmp/deploy.tar.gz
+            rm /tmp/deploy.tar.gz
+
+            echo "Reiniciando aplicação..."
+            pm2 restart portfolio
+
+            echo "Deploy feito! :D\n Status dos processos (através do PM2):"
+            pm2 status
