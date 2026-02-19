@@ -22,38 +22,7 @@ export default function Contact() {
         {/* Bento Grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-3 md:auto-rows-[180px]">
 
-          {/* Card 1 — Formação: col-span-2 */}
-          <div className="md:col-span-2 bento-card border border-primary-blue/20 justify-between hover:border-primary-blue/40">
-            <span className="bento-label">Formação</span>
-            <div>
-              <h3 className="text-base font-bold text-gray-200 mb-1">
-                Bacharelado em Ciência da Computação
-              </h3>
-              <p className="text-sm text-primary-blue font-light">Universidade São Judas Tadeu</p>
-              <p className="font-mono text-[10px] text-gray-600 mt-2">
-                Jan 2022 – Jun 2026 &nbsp;·&nbsp; 9º/9º semestre
-              </p>
-            </div>
-          </div>
-
-          {/* Card 2 — Status */}
-          <div className="bento-card border border-green-500/20 justify-between hover:border-green-500/40 hover:bg-green-500/5">
-            <span className="bento-label">Status</span>
-            <div className="space-y-2">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse flex-shrink-0" />
-                <span className="text-xs text-white font-light">Disponível para conversas</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-primary-blue flex-shrink-0" />
-                <span className="text-xs text-white font-light">São Paulo, SP</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-gray-600 flex-shrink-0" />
-                <span className="text-xs text-gray-500 font-mono text-[10px]">Eng. Software Jr.</span>
-              </div>
-            </div>
-          </div>
+          
 
           {/* Card 3 — Email */}
           <a
