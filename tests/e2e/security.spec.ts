@@ -36,7 +36,8 @@ test.describe("cabeçalhos de segurança", () => {
     expect(nonceA).not.toBe(nonceB);
 
     const html = await a.text();
-    const scripts = [...html.matchAll(/<script\b[^>]*>/g)].map((m) => m[0]);
+    // "i": a checagem também pega <SCRIPT> em maiúsculas (CodeQL js/bad-tag-filter).
+    const scripts = [...html.matchAll(/<script\b[^>]*>/gi)].map((m) => m[0]);
     expect(scripts.length).toBeGreaterThan(0);
     for (const tag of scripts) expect(tag, tag).toContain(`nonce="${nonceA}"`);
   });
