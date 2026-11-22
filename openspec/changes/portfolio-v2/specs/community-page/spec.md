@@ -25,11 +25,12 @@ Cada meetup SHALL exibir edição, data, local, descrição, números de públic
 - **THEN** a mesma foto continua exibida
 
 ### Requirement: Parceiros em grade estática
-A página SHALL listar os parceiros da comunidade em uma grade estática (sem animação contínua), cada um com logo, descrição e link externo seguro.
+A página SHALL listar os parceiros da comunidade em uma grade estática (sem animação contínua), cada um com logo e descrição. Parceiros com site conhecido MUST ter link externo seguro; parceiros sem site confirmado MUST aparecer sem link (nunca com link quebrado).
 
 #### Scenario: Parceiros visíveis
 - **WHEN** a página `/comunidade` é exibida
-- **THEN** cada parceiro aparece uma única vez, com link que abre em nova aba com `rel` contendo `noopener`
+- **THEN** cada parceiro aparece uma única vez
+- **AND** todo link de parceiro abre em nova aba com `rel` contendo `noopener`
 
 ### Requirement: Volta para o início
 A página SHALL oferecer um link para voltar à página inicial.
