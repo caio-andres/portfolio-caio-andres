@@ -99,6 +99,7 @@ test.describe("security.txt", () => {
     expect(body).toMatch(/^Canonical: https:\/\/caioandres\.dev\/\.well-known\/security\.txt$/m);
     const expires = /^Expires: (.+)$/m.exec(body)?.[1];
     expect(expires).toBeTruthy();
-    expect(new Date(expires!).getTime()).toBeGreaterThan(Date.now());
+    const daysLeft = (new Date(expires!).getTime() - Date.now()) / 86_400_000;
+    expect(daysLeft, "renove SECURITY_TXT_EXPIRES em lib/security/security-txt.ts").toBeGreaterThan(30);
   });
 });

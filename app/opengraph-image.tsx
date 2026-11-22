@@ -1,9 +1,10 @@
 import { readFile } from "node:fs/promises";
 import path from "node:path";
 import { ImageResponse } from "next/og";
+import { OG_IMAGE_ALT } from "@/lib/seo";
 
 // Imagem de compartilhamento (LinkedIn, WhatsApp, X...). Gerada no build.
-export const alt = "Caio André (Caio Andres), engenheiro de software no Itaú Unibanco";
+export const alt = OG_IMAGE_ALT;
 export const size = { width: 1200, height: 630 };
 export const contentType = "image/png";
 

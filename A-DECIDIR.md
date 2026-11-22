@@ -42,9 +42,17 @@ Mexem nas configurações do repositório público, por isso não liguei sozinho
 - [ ] **Reporte privado de vulnerabilidade** (botão "Report a vulnerability" na aba Security): `gh api -X PUT repos/caio-andres/portfolio-caio-andres/private-vulnerability-reporting`. Se ligar, vale citar no `SECURITY.md`.
 - [ ] **Proteger a `main`** (exigir o CI verde antes do merge): em Settings → Rules, ou peça que eu configure.
 
-## 5. Lembretes com data
+## 5. Deploy na VPS (já era assim, vale melhorar)
 
-- **`security.txt` vence em 22/11/2027** (`lib/security/security-txt.ts`). O teste E2E falha quando vencer, então o CI avisa. Renovar com mais um ano.
+O script remoto do `deploy.yml` não para quando um passo falha (não tem `set -e`). Se o upload vier truncado ou faltar a pasta `~/backups`, ele ainda reinicia o PM2 com um build misturado e marca o deploy como sucesso. Ele também extrai por cima do `.next` antigo, então arquivos velhos ficam lá. Não mexi porque não tenho como testar na VPS. Proposta, para aplicar com você olhando:
+
+1. `set -euo pipefail` e `mkdir -p ~/backups` no começo do script.
+2. Extrair em uma pasta nova (`/var/www/portfolio-caio-andres.new`), conferir se `.next/BUILD_ID` existe e só então parar o PM2, trocar as pastas com `mv` e reiniciar.
+3. Manter a pasta anterior como `.old` para rollback rápido (`mv` de volta e `pm2 restart`).
+
+## 6. Lembretes com data
+
+- **`security.txt` vence em 22/11/2027** (`lib/security/security-txt.ts`). A partir de 30 dias antes, o E2E do CI dos PRs falha para lembrar. O deploy não trava por isso. Renovar com mais um ano.
 
 ## Onde acompanhar
 

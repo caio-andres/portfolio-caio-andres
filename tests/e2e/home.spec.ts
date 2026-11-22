@@ -167,6 +167,31 @@ test.describe("paleta de comandos", () => {
   });
 });
 
+test.describe("regressões da revisão de código", () => {
+  test("o skip link não troca a aba aberta", async ({ page }) => {
+    await openTab(page, "projects");
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.keyboard.press("Tab");
+    await page.keyboard.press("Enter");
+    await expect(page.locator("#conteudo")).toBeFocused();
+    await expect(page.locator("#panel-projects")).toBeVisible();
+    await expect(page.locator("#panel-about")).toBeHidden();
+  });
+
+  test("Ver projetos funciona mesmo com #projects já na URL", async ({ page }) => {
+    await openTab(page, "projects");
+    await page.evaluate(() => window.scrollTo(0, 0));
+    await page.getByRole("link", { name: "Ver projetos" }).click();
+    await expect(page.locator("#panel-projects")).toBeFocused();
+    await expect.poll(() => page.getByRole("tablist").evaluate((el) => Math.round(el.getBoundingClientRect().top))).toBeLessThanOrEqual(1);
+  });
+
+  test("o rodapé mostra o ano atual", async ({ page }) => {
+    await page.goto("/");
+    await expect(page.getByRole("contentinfo")).toContainText("© " + new Date().getFullYear() + " Caio André");
+  });
+});
+
 test.describe("navegação por teclado", () => {
   test("o primeiro Tab mostra o link para pular para o conteúdo", async ({ page }) => {
     await page.goto("/");

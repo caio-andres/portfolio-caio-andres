@@ -76,9 +76,10 @@ describe("security.txt", () => {
     expect(txt).toMatch(/^Canonical: https:\/\/caioandres\.dev\/\.well-known\/security\.txt$/m);
   });
 
-  it("não está perto de vencer (renovar com 30 dias de folga)", () => {
+  // A folga de 30 dias é checada no E2E (só no CI dos PRs), para que o vencimento
+  // nunca trave um deploy urgente: os testes unitários também rodam no deploy.
+  it("não passa de 1 ano no futuro (recomendação da RFC)", () => {
     const daysLeft = (Date.parse(SECURITY_TXT_EXPIRES) - Date.now()) / 86_400_000;
-    expect(daysLeft, "atualize SECURITY_TXT_EXPIRES em lib/security/security-txt.ts").toBeGreaterThan(30);
-    expect(daysLeft, "a RFC recomenda menos de 1 ano").toBeLessThanOrEqual(366);
+    expect(daysLeft).toBeLessThanOrEqual(366);
   });
 });

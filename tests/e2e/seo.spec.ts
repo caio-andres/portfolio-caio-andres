@@ -48,6 +48,15 @@ test.describe("SEO e compartilhamento", () => {
     }
   });
 
+  test("/comunidade compartilha com imagem e título próprios", async ({ page }) => {
+    await page.goto("/comunidade");
+    await expect(page.locator('meta[property="og:image"]').first()).toHaveAttribute("content", /opengraph-image/);
+    await expect(page.locator('meta[property="og:title"]')).toHaveAttribute("content", /Servidor dos Programadores/);
+    await expect(page.locator('meta[property="og:site_name"]')).toHaveAttribute("content", "Caio André");
+    await expect(page.locator('meta[name="twitter:title"]')).toHaveAttribute("content", /Servidor dos Programadores/);
+    await expect(page.locator('link[rel="canonical"]')).toHaveAttribute("href", "https://caioandres.dev/comunidade");
+  });
+
   test("a 404 não é indexada", async ({ page }) => {
     await page.goto("/nada-aqui");
     await expect(page.locator('meta[name="robots"]')).toHaveAttribute("content", /noindex/);

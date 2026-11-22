@@ -5,17 +5,13 @@ import { SiDiscord } from "react-icons/si";
 import { MeetupGallery } from "@/components/community/MeetupGallery";
 import { ExternalLink } from "@/components/ui/ExternalLink";
 import { communityFeatures, communityStats, meetups, partners } from "@/lib/data/community";
+import { pageMetadata } from "@/lib/seo";
 import { DISCORD_INVITE } from "@/lib/site";
 
 const DESCRIPTION =
   "Servidor dos Programadores: comunidade no Discord com mais de 14.500 devs, fundada pelo Caio André em 2023. Tira-dúvidas, vagas, eventos e MeetUps presenciais em São Paulo.";
 
-export const metadata: Metadata = {
-  title: "Servidor dos Programadores",
-  description: DESCRIPTION,
-  alternates: { canonical: "/comunidade" },
-  openGraph: { title: "Servidor dos Programadores", description: DESCRIPTION, url: "/comunidade" },
-};
+export const metadata: Metadata = pageMetadata({ title: "Servidor dos Programadores", description: DESCRIPTION, path: "/comunidade" });
 
 export default function ComunidadePage() {
   return (

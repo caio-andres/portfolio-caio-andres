@@ -2,13 +2,15 @@
 
 import { useEffect, useRef, useSyncExternalStore, type KeyboardEvent, type ReactNode } from "react";
 import { cn } from "@/lib/utils";
-import { DEFAULT_TAB, TAB_EVENT, tabFromHash, type TabId } from "@/components/home/tab-ids";
+import { DEFAULT_TAB, TAB_EVENT, nextActiveTab, parseTabHash, type TabEventDetail, type TabId } from "@/components/home/tab-ids";
 
 export type TabDef = { id: TabId; label: string; content: ReactNode };
 
 // A aba ativa mora na URL (#projects). Este store lê o hash e avisa o React
 // quando ele muda: por link/âncora (hashchange), voltar/avançar (popstate) ou
 // pela própria UI (evento TAB_EVENT, porque pushState não dispara nada).
+// Hash que não é de aba (o skip link "#conteudo") não troca a aba: por isso a
+// última aba válida fica guardada aqui fora.
 function subscribe(onChange: () => void) {
   window.addEventListener("hashchange", onChange);
   window.addEventListener("popstate", onChange);
@@ -19,8 +21,9 @@ function subscribe(onChange: () => void) {
     window.removeEventListener(TAB_EVENT, onChange);
   };
 }
-const getHash = () => window.location.hash;
-const getServerHash = () => "";
+let lastTab: TabId = DEFAULT_TAB;
+const getTab = (): TabId => (lastTab = nextActiveTab(window.location.hash, lastTab));
+const getServerTab = (): TabId => DEFAULT_TAB;
 
 /** Rola a página até o topo do bloco de abas (onde a barra fica antes de grudar). */
 function scrollToTabs(root: HTMLElement) {
@@ -36,19 +39,22 @@ function scrollToTabsIfNeeded(root: HTMLElement | null) {
 }
 
 export function Tabs({ tabs, label }: { tabs: TabDef[]; label: string }) {
-  const hash = useSyncExternalStore(subscribe, getHash, getServerHash);
-  const active = tabFromHash(hash);
+  const active = useSyncExternalStore(subscribe, getTab, getServerTab);
   const rootRef = useRef<HTMLDivElement>(null);
   const tabRefs = useRef<Partial<Record<TabId, HTMLButtonElement | null>>>({});
 
   // Navegação vinda de fora da barra (link "ver projetos", paleta, link direto):
   // traz as abas para a tela.
   useEffect(() => {
-    const onHash = () => scrollToTabsIfNeeded(rootRef.current);
-    const onTab = (e: Event) => {
-      if ((e as CustomEvent<{ scroll?: boolean }>).detail?.scroll) scrollToTabsIfNeeded(rootRef.current);
+    // Só hash de aba rola até as abas; "#conteudo" e outras âncoras seguem o normal.
+    const onHash = () => {
+      if (parseTabHash(window.location.hash)) scrollToTabsIfNeeded(rootRef.current);
     };
-    if (tabFromHash(window.location.hash) !== DEFAULT_TAB) scrollToTabsIfNeeded(rootRef.current);
+    const onTab = (e: Event) => {
+      if ((e as CustomEvent<TabEventDetail>).detail?.scroll) scrollToTabsIfNeeded(rootRef.current);
+    };
+    const initial = parseTabHash(window.location.hash);
+    if (initial && initial !== DEFAULT_TAB) scrollToTabsIfNeeded(rootRef.current);
     window.addEventListener("hashchange", onHash);
     window.addEventListener(TAB_EVENT, onTab);
     return () => {

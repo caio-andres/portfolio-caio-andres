@@ -1,5 +1,6 @@
 import { ArrowRight, ArrowUpRight } from "lucide-react";
 import Link from "next/link";
+import { TabLink } from "@/components/home/TabLink";
 import { CopyEmailButton } from "@/components/ui/CopyEmailButton";
 import { heroCards, heroLead, heroProps, photoCaption, type HeroCard } from "@/lib/data/profile";
 import { person } from "@/lib/site";
@@ -76,10 +77,10 @@ export function Hero() {
           <p className="mt-8 max-w-[60ch] text-lead text-muted">{heroLead}</p>
 
           <div className="mt-8 flex flex-wrap items-center gap-3">
-            <a href="#projects" className="btn-primary">
+            <TabLink tab="projects" className="btn-primary">
               Ver projetos
               <ArrowRight size={16} aria-hidden="true" />
-            </a>
+            </TabLink>
             <CopyEmailButton email={person.email} />
           </div>
         </div>

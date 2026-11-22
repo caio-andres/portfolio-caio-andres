@@ -4,7 +4,8 @@ import { Search } from "lucide-react";
 import { usePathname, useRouter } from "next/navigation";
 import { useCallback, useEffect, useId, useMemo, useRef, useState, useSyncExternalStore } from "react";
 import { DISCORD_INVITE, REPO_URL, person, social } from "@/lib/site";
-import { TAB_EVENT, type TabId } from "@/components/home/tab-ids";
+import { goToTab as openTab } from "@/components/home/go-to-tab";
+import type { TabId } from "@/components/home/tab-ids";
 
 type Action = {
   id: string;
@@ -46,8 +47,7 @@ export function CommandPalette() {
       if (pathname === "/") {
         // Ao fechar, o foco vai para o painel aberto (lido no onClose do dialog).
         document.getElementById(dialogId)?.setAttribute("data-focus-after-close", "panel-" + tab);
-        history.pushState(null, "", `#${tab}`);
-        window.dispatchEvent(new CustomEvent(TAB_EVENT, { detail: { tab, scroll: true } }));
+        openTab(tab);
       } else {
         router.push(`/#${tab}`);
       }

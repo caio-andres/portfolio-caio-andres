@@ -3,7 +3,8 @@ import { SocialIcon } from "@/components/ui/SocialIcon";
 import { BUILD_SHA, REPO_URL, socials } from "@/lib/site";
 
 export function SiteFooter() {
-  const year = 2026;
+  // A página é renderizada a cada requisição, então o ano está sempre certo.
+  const year = new Date().getFullYear();
   return (
     <footer className="mx-auto mt-24 max-w-[1120px] px-5 pb-10 md:px-8">
       <div className="flex flex-col gap-8 border-t border-line pt-8 md:flex-row md:items-start md:justify-between">

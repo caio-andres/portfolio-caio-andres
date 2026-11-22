@@ -48,13 +48,13 @@
 
 ## 8. CI, supply chain e documentação
 
-- [ ] 8.1 `ci.yml` (lint, typecheck, unit, build, e2e, audit), `codeql.yml`, `dependabot.yml`; `deploy.yml` com `permissions` mínimas e Node 22; verificar com `actionlint` (se disponível) e execução no PR
+- [x] 8.1 `ci.yml` (lint, typecheck, unit, build, e2e, audit), `codeql.yml`, `dependabot.yml`; `deploy.yml` com `permissions` mínimas e Node 22; verificar com `actionlint` (se disponível) e execução no PR
 - [x] 8.2 `AGENTS.md`, `README.md`, `SECURITY.md` e `A-DECIDIR.md`; verificar que os comandos documentados rodam
 
 ## 9. Verificação integrada
 
 - [x] 9.1 Rodar `npm run check` + `npm run test:e2e` completos e revisar screenshots desktop/mobile da home, das 4 abas, da comunidade e da 404
-- [ ] 9.2 Revisão de código (`/code-review` ou `pr-review-toolkit`) e correção dos achados relevantes
+- [x] 9.2 Revisão de código (`/code-review` ou `pr-review-toolkit`) e correção dos achados relevantes
 
 ## Workflow follow-up
 

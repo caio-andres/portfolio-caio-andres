@@ -1,18 +1,17 @@
 name: CI
 
-# Roda em todo PR e em push fora da main. Na main quem roda é o deploy.yml,
-# que repete as checagens rápidas antes de publicar.
+# Roda em todo PR (e sob demanda). Na main quem roda é o deploy.yml, que
+# repete as checagens rápidas antes de publicar.
 on:
   pull_request:
-  push:
-    branches-ignore:
-      - main
+  workflow_dispatch:
 
 permissions:
   contents: read
 
+# Commit novo no PR cancela o run anterior do mesmo PR.
 concurrency:
-  group: ci-${{ github.ref }}
+  group: ci-${{ github.head_ref || github.ref_name }}
   cancel-in-progress: true
 
 jobs:

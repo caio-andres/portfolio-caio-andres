@@ -50,7 +50,7 @@ npm run test:e2e       # Playwright contra o build de produção (rode o build a
 - **Páginas são dinâmicas** (o nonce é por requisição): o layout chama `connection()`. Não troque por geração estática.
 - **Tamanho de fonte novo** no `@theme`: adicione também em `FONT_SIZE_TOKENS` (`lib/utils.ts`), senão o `cn()` descarta a classe. Um teste avisa.
 - **Link externo**: use `ExternalLink` (força `noopener noreferrer`).
-- **Movimento**: só CSS, respeitando `prefers-reduced-motion`; nada de autoplay.
+- **Movimento**: animação decorativa só em CSS; rolagem suave só como resposta a uma ação de quem está vendo. Tudo respeita `prefers-reduced-motion`, e nada de autoplay.
 - **Texto**: português, primeira pessoa, sincero e sem exagero. Não invente fato (números, cargos, datas): na dúvida, pergunte ou registre em `A-DECIDIR.md`.
 
 ## Git e deploy
