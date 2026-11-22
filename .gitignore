@@ -1,17 +1,32 @@
+# deps / build
 node_modules
 .next
-.env*.local
-.env
-*.log
-.DS_Store
+out
 dist
 build
 coverage
+*.tsbuildinfo
+next-env.d.ts
+
+# testes
+playwright-report
+test-results
+blob-report
+.playwright-mcp
+
+# variáveis de ambiente (nunca commitar segredos)
+.env
+.env.*
+!.env.example
+
+# sistema / editores
+*.log
+.DS_Store
 .idea
 .vscode
 .abacusai
 
-# claude
+# claude (contexto local do dono)
 .claude
 CLAUDE.md
 mudanca-*.md
