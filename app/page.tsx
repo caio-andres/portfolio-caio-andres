@@ -1,30 +1,33 @@
-import Image from "next/image";
-import Hero from "@/components/Hero";
-import AboutContent from "@/components/AboutContent";
-import Experience from "@/components/Experience";
-import Projects from "@/components/Projects";
-import Contact from "@/components/Contact";
-import SectionLayout from "@/components/SectionLayout";
-import Footer from "@/components/Footer";
-import { StripedPattern } from "@/components/magicui/striped-pattern";
+import { headers } from "next/headers";
+import { Hero } from "@/components/home/Hero";
+import { NowSection } from "@/components/home/NowSection";
+import { Tabs } from "@/components/home/Tabs";
+import { AboutPanel } from "@/components/home/panels/AboutPanel";
+import { ContactPanel } from "@/components/home/panels/ContactPanel";
+import { ExperiencePanel } from "@/components/home/panels/ExperiencePanel";
+import { ProjectsPanel } from "@/components/home/panels/ProjectsPanel";
+import { JsonLd } from "@/components/seo/JsonLd";
+import { personJsonLd } from "@/lib/seo";
 
-export default function Home() {
+export default async function Home() {
+  const nonce = (await headers()).get("x-nonce") ?? undefined;
+
   return (
-    <main className="relative overflow-hidden">
-      <StripedPattern className="fixed inset-0 z-0 opacity-[0.03] [mask-image:radial-gradient(ellipse_at_center,white,transparent)]" />
-
-      <div className="relative z-10 pt-8">
-        <div className="container mx-auto max-w-5xl px-6">
-          <Hero />
-          <SectionLayout
-            about={<AboutContent />}
-            experience={<Experience />}
-            projects={<Projects />}
-            contact={<Contact />}
-          />
-          <Footer />
-        </div>
+    <>
+      <JsonLd data={personJsonLd()} nonce={nonce} />
+      <Hero />
+      <NowSection />
+      <div className="mt-20 md:mt-24">
+        <Tabs
+          label="Seções do portfolio"
+          tabs={[
+            { id: "about", label: "about", content: <AboutPanel /> },
+            { id: "experience", label: "experience", content: <ExperiencePanel /> },
+            { id: "projects", label: "projects", content: <ProjectsPanel /> },
+            { id: "contact", label: "contact", content: <ContactPanel /> },
+          ]}
+        />
       </div>
-    </main>
+    </>
   );
 }
