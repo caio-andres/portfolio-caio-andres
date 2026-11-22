@@ -9,11 +9,12 @@ export function SiteHeader() {
   const li = social("linkedin");
   return (
     <header className="mx-auto flex max-w-[1120px] items-center justify-between gap-4 px-5 py-5 md:px-8">
-      <Link href="/" className="group flex items-center gap-3" aria-label="Caio André, página inicial">
+      <Link href="/" className="group flex items-center gap-3">
         <img src="/img/brand/cat.webp" alt="" width={256} height={256} className="size-9 transition-transform group-hover:-rotate-6" />
         <span className="font-mono text-small text-fg">
           caio<span className="text-faint">.</span>andres
         </span>
+        <span className="sr-only">, página inicial</span>
       </Link>
 
       <nav aria-label="Principal" className="flex items-center gap-1 sm:gap-2">

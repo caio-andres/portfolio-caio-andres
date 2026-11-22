@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 
+// O Next já marca a 404 com noindex sozinho.
 export const metadata: Metadata = {
   title: "Página não encontrada",
-  robots: { index: false },
 };
 
 export default function NotFound() {

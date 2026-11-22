@@ -55,7 +55,6 @@ export const metadata: Metadata = {
     username: person.handle,
   },
   twitter: { card: "summary_large_image", title: SITE_TITLE, description: SITE_DESCRIPTION },
-  robots: { index: true, follow: true },
   formatDetection: { email: false, telephone: false, address: false },
 };
 
